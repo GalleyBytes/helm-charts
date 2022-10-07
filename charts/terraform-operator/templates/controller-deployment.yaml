@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: terraform-operator
+  name: {{ .Release.Name }}
   labels:
     app: {{ .Chart.Name }}
     chart: {{ template "_chart.label" . }}
@@ -25,7 +25,7 @@ spec:
         app: {{ .Chart.Name }}
         release: {{ .Release.Name }}
     spec:
-      serviceAccountName: terraform-operator
+      serviceAccountName: {{ .Release.Name }}
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001

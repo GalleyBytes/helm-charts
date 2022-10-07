@@ -2,6 +2,6 @@
 {{ if .Values.controller.enabled }}
 Check logs with the following command:
 
-    kubectl -n {{ .Release.Namespace }} logs -f deploy/terraform-operator
+    kubectl -n {{ .Release.Namespace }} logs -f deploy/{{ .Release.Name }}
 {{ end }}
 ---

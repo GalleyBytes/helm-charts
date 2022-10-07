@@ -19,7 +19,7 @@ controller:
     pullPolicy: IfNotPresent
 
   # controller.args -- additional arguments for the command
-  # @default -- <a href="values.yaml#L22-L24">values.yaml</a>
+  # @default -- <a href="values.yaml#L23-L25">values.yaml</a>
   args:
   - --zap-log-level=debug
   - --zap-encoder=console
@@ -28,7 +28,7 @@ controller:
   # - --max-concurrent-reconciles=10
 
   # controller.resources -- CPU/Memory request and limit configuration
-  # @default -- <a href="values.yaml#L28-L34">values.yaml</a>
+  # @default -- <a href="values.yaml#L32-L38">values.yaml</a>
   resources:
     limits:
       cpu: 50m
@@ -39,7 +39,6 @@ controller:
 
   # controller.environmentVars -- key/value envs
   environmentVars: {}
-    # DOCKERREPO: isaaguilar
 
   # controller.nodeSelector -- node labels for pod assignment
   nodeSelector: {}
