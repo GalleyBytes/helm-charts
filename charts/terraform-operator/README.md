@@ -1,6 +1,6 @@
 # terraform-operator
 
-![Version: 0.2.19](https://img.shields.io/badge/Version-0.2.19-informational?style=flat-square) ![AppVersion: v0.9.0-alpha1](https://img.shields.io/badge/AppVersion-v0.9.0--alpha1-informational?style=flat-square)
+![Version: 0.2.20](https://img.shields.io/badge/Version-0.2.20-informational?style=flat-square) ![AppVersion: v0.9.0-alpha1](https://img.shields.io/badge/AppVersion-v0.9.0--alpha1-informational?style=flat-square)
 
 A Helm chart to deploy the terraform-operator Controller and CRD.
 
