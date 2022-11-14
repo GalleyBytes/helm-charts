@@ -1,6 +1,6 @@
 # terraform-operator
 
-![Version: 0.2.20](https://img.shields.io/badge/Version-0.2.20-informational?style=flat-square) ![AppVersion: v0.9.0-alpha1](https://img.shields.io/badge/AppVersion-v0.9.0--alpha1-informational?style=flat-square)
+![Version: 0.2.21](https://img.shields.io/badge/Version-0.2.21-informational?style=flat-square) ![AppVersion: v0.9.0-alpha1](https://img.shields.io/badge/AppVersion-v0.9.0--alpha1-informational?style=flat-square)
 
 A Helm chart to deploy the terraform-operator Controller and CRD.
 
@@ -34,5 +34,7 @@ kubectl apply -f crds/terraform.yaml
 | controller.nodeSelector | `object` node labels for pod assignment | `{}` |
 | controller.replicaCount | `int` number of replicas | `1` |
 | controller.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L31-L37">values.yaml</a> |
+| controller.securityContext.runAsNonRoot | `bool`  | `true` |
+| controller.securityContext.runAsUser | `int`  | `1001` |
 | controller.tolerations | `list` List of node taints to tolerate | `[]` |
 | webhook.enabled | `bool` enables the webhook - required most of the time | `true` |
