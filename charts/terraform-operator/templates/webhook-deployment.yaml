@@ -1,0 +1,109 @@
+{{- if .Values.webhook.enabled }}
+{{- $root := . -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-webhook
+  labels:
+    app: {{ .Chart.Name }}
+    chart: {{ template "_chart.label" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: webhook
+spec:
+  replicas: {{ .Values.webhook.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+      release: {{ .Release.Name }}
+      component: webhook
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+        chart: {{ template "_chart.label" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+        component: webhook
+    spec:
+      serviceAccountName: {{ .Release.Name }}-webhook
+      {{- with .Values.webhook.securityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      initContainers:
+      - name: gencert
+        image: "ghcr.io/galleybytes/terraform-operator-gencert:1.0.2"
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SERVICE
+          value: {{ .Release.Name }}-webhook
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: SECRET
+          value: {{ .Release.Name }}-webhook-selfsigned
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.webhook.image.repository }}:{{ .Values.webhook.image.tag }}"
+        imagePullPolicy: {{ .Values.webhook.image.pullPolicy }}
+        command:
+        - terraform-operator
+        args:
+        {{- range .Values.webhook.args }}
+        - {{ . }}
+        {{- end }}
+        - --disable-reconciler
+        env:
+        - name: WATCH_NAMESPACE
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: OPERATOR_NAME
+          value: terraform-operator
+        {{- range $key, $value := .Values.webhook.environment_vars }}
+        - name: {{ $key }}
+          value: "{{ $value }}"
+        {{- end }}
+        {{- with .Values.webhook.env }}
+        {{- tpl (toYaml .) $root  | nindent 8 }}
+        {{- end }}
+        {{- with .Values.webhook.resources }}
+        resources:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        ports:
+        - name: https
+          containerPort: 9443
+          protocol: TCP
+        volumeMounts:
+        - name: certs
+          mountPath: /tmp/k8s-webhook-server/serving-certs
+          readOnly: true
+      volumes:
+      - name: certs
+        secret:
+          secretName: {{ .Release.Name }}-webhook-selfsigned
+          optional: true
+      {{- with .Values.webhook.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.webhook.affinity }}
+      affinity:
+        {{- tpl (toYaml .) $root | nindent 8 }}
+      {{- end }}
+      {{- with .Values.webhook.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end -}}

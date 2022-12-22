@@ -5,10 +5,10 @@ metadata:
   name: {{ .Release.Name }}-webhook
   labels:
     app: {{ .Chart.Name }}
-    component: webhook
     chart: {{ template "_chart.label" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    component: webhook
 spec:
   ports:
   - name: https
@@ -18,6 +18,7 @@ spec:
   selector:
     app: {{ .Chart.Name }}
     release: {{ .Release.Name }}
+    component: webhook
   sessionAffinity: None
   type: ClusterIP
 {{ end }}

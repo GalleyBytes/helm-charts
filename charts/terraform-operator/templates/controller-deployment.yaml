@@ -9,6 +9,7 @@ metadata:
     chart: {{ template "_chart.label" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    component: controller
 spec:
   replicas: {{ .Values.controller.replicaCount }}
   strategy:
@@ -20,33 +21,21 @@ spec:
     matchLabels:
       app: {{ .Chart.Name }}
       release: {{ .Release.Name }}
+      component: controller
   template:
     metadata:
       labels:
         app: {{ .Chart.Name }}
+        chart: {{ template "_chart.label" . }}
         release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+        component: controller
     spec:
       serviceAccountName: {{ .Release.Name }}
       {{- with .Values.controller.securityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      initContainers:
-      {{- if .Values.webhook.enabled }}
-      - name: gencert
-        image: "ghcr.io/galleybytes/terraform-operator-gencert:1.0.2"
-        imagePullPolicy: IfNotPresent
-        env:
-        - name: SERVICE
-          value: {{ .Release.Name }}-webhook
-        - name: NAMESPACE
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: metadata.namespace
-        - name: SECRET
-          value: {{ .Release.Name }}-selfsigned
-      {{- end}}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.controller.image.repository }}:{{ .Values.controller.image.tag }}"
@@ -57,9 +46,7 @@ spec:
         {{- range .Values.controller.args }}
         - {{ . }}
         {{- end }}
-        {{- if not .Values.webhook.enabled }}
         - --disable-conversion-webhook
-        {{- end }}
         env:
         - name: WATCH_NAMESPACE # Leave blank to watch all namespaces
         - name: POD_NAME
@@ -80,23 +67,6 @@ spec:
         resources:
           {{- toYaml . | nindent 10 }}
         {{- end }}
-        ports:
-        - name: https
-          containerPort: 9443
-          protocol: TCP
-        volumeMounts:
-        {{- if .Values.webhook.enabled }}
-        - name: certs
-          mountPath: /tmp/k8s-webhook-server/serving-certs
-          readOnly: true
-        {{- end }}
-      volumes:
-      {{- if .Values.webhook.enabled }}
-      - name: certs
-        secret:
-          secretName: {{ .Release.Name }}-selfsigned
-          optional: true
-      {{- end }}
       {{- with .Values.controller.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
