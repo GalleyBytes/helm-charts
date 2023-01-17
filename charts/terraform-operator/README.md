@@ -31,6 +31,8 @@ kubectl apply -f crds/terraform.yaml
 | controller.image.pullPolicy | `string` Set how kubernetes determines when to pull the docker image. | `"IfNotPresent"` |
 | controller.image.repository | `string` image without the tag. | `"isaaguilar/terraform-operator"` |
 | controller.image.tag | `string` tag of the image | `"v0.9.0-beta1"` |
+| controller.serviceAccount.create | `bool` To set wether to create the service account. | `True` |
+| controller.serviceAccount.extraAnnotations | `object` To add extra annotationto the service account | `{}` |
 | controller.nodeSelector | `object` node labels for pod assignment | `{}` |
 | controller.replicaCount | `int` number of replicas | `1` |
 | controller.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L31-L37">values.yaml</a> |

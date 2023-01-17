@@ -36,6 +36,10 @@ controller:
       cpu: 25m
       memory: 64M
 
+  serviceAccount:
+    # wether to create a service account
+    create: true
+    extraAnnotations: {}
   securityContext:
     # -- Allow running as root when false
     runAsNonRoot: true
