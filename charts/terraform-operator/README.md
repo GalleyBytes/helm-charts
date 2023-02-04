@@ -1,6 +1,6 @@
 # terraform-operator
 
-![Version: 0.3.4](https://img.shields.io/badge/Version-0.3.4-informational?style=flat-square) ![AppVersion: v0.9.0-beta1](https://img.shields.io/badge/AppVersion-v0.9.0--beta1-informational?style=flat-square)
+![Version: 0.3.6](https://img.shields.io/badge/Version-0.3.6-informational?style=flat-square) ![AppVersion: v0.9.0-beta2](https://img.shields.io/badge/AppVersion-v0.9.0--beta2-informational?style=flat-square)
 
 A Helm chart to deploy the terraform-operator Controller and CRD.
 
@@ -31,16 +31,16 @@ kubectl apply -f crds/terraform.yaml
 | controller.image.pullPolicy | `string` Set how kubernetes determines when to pull the docker image. | `"IfNotPresent"` |
 | controller.image.repository | `string` image without the tag. | `"isaaguilar/terraform-operator"` |
 | controller.image.tag | `string` tag of the image | `"v0.9.0-beta1"` |
-| controller.serviceAccount.create | `bool` To set wether to create the service account. | `True` |
-| controller.serviceAccount.extraAnnotations | `object` To add extra annotationto the service account | `{}` |
 | controller.nodeSelector | `object` node labels for pod assignment | `{}` |
 | controller.replicaCount | `int` number of replicas | `1` |
 | controller.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L31-L37">values.yaml</a> |
 | controller.securityContext.runAsNonRoot | `bool` Allow running as root when false | `true` |
 | controller.securityContext.runAsUser | `int` All processes run with user specified. This can be set to null for use on openshift | `1001` |
+| controller.serviceAccount.create | `bool` creates the service account for the controller | `true` |
+| controller.serviceAccount.extraAnnotations | `object` add extra annotations the service account | `{}` |
 | controller.tolerations | `list` List of node taints to tolerate | `[]` |
-| webhook.affinity | `object` node/pod affinities | <a href="values.yaml#L110">values.yaml</a> |
-| webhook.args | `list` additional arguments for the command | <a href="values.yaml#L79">values.yaml</a> |
+| webhook.affinity | `object` node/pod affinities | <a href="values.yaml#L117">values.yaml</a> |
+| webhook.args | `list` additional arguments for the command | <a href="values.yaml#L85">values.yaml</a> |
 | webhook.enabled | `bool` enables the webhook - required most of the time | `true` |
 | webhook.env | `list` Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core. Accepts `tpl` values. | `[]` |
 | webhook.environmentVars | `object` key/value envs | `{}` |
@@ -49,7 +49,7 @@ kubectl apply -f crds/terraform.yaml
 | webhook.image.tag | `string` tag of the image | `"v0.9.0-beta1"` |
 | webhook.nodeSelector | `object` node labels for pod assignment | `{}` |
 | webhook.replicaCount | `int` number of replicas for the webhook | `2` |
-| webhook.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L85">values.yaml</a> |
+| webhook.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L91">values.yaml</a> |
 | webhook.securityContext.runAsNonRoot | `bool` Allow running as root when false | `true` |
 | webhook.securityContext.runAsUser | `int` All processes run with user specified. This can be set to null for use on openshift | `1001` |
 | webhook.tolerations | `list` List of node taints to tolerate | `[]` |

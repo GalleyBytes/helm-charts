@@ -37,9 +37,11 @@ controller:
       memory: 64M
 
   serviceAccount:
-    # wether to create a service account
+    # -- creates the service account for the controller
     create: true
+    # -- add extra annotations the service account
     extraAnnotations: {}
+
   securityContext:
     # -- Allow running as root when false
     runAsNonRoot: true
@@ -79,13 +81,13 @@ webhook:
     pullPolicy: IfNotPresent
 
   # -- additional arguments for the command
-  # @default -- <a href="values.yaml#L79">values.yaml</a>
+  # @default -- <a href="values.yaml#L85">values.yaml</a>
   args:
   - --zap-log-level=debug
   - --zap-encoder=console
 
   # -- CPU/Memory request and limit configuration
-  # @default -- <a href="values.yaml#L85">values.yaml</a>
+  # @default -- <a href="values.yaml#L91">values.yaml</a>
   resources:
     requests:
       cpu: 25m
@@ -111,7 +113,7 @@ webhook:
   tolerations: []
 
   # -- node/pod affinities
-  # @default -- <a href="values.yaml#L110">values.yaml</a>
+  # @default -- <a href="values.yaml#L117">values.yaml</a>
   affinity:
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
