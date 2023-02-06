@@ -12,7 +12,7 @@ controller:
     # controller.image.repository -- image without the tag.
     repository: isaaguilar/terraform-operator
     # controller.image.tag -- tag of the image
-    tag: v0.9.0-beta1
+    tag: v0.9.0-beta2
     # controller.image.pullPolicy -- Set how kubernetes determines when
     # to pull the docker image.
     pullPolicy: IfNotPresent
@@ -76,7 +76,7 @@ webhook:
     # -- image without the tag. Usually the same as the controller
     repository: isaaguilar/terraform-operator
     # -- tag of the image
-    tag: v0.9.0-beta1
+    tag: v0.9.0-beta2
     # -- Set how kubernetes determines when to pull the docker image.
     pullPolicy: IfNotPresent
 

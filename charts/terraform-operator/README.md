@@ -1,6 +1,6 @@
 # terraform-operator
 
-![Version: 0.3.6](https://img.shields.io/badge/Version-0.3.6-informational?style=flat-square) ![AppVersion: v0.9.0-beta2](https://img.shields.io/badge/AppVersion-v0.9.0--beta2-informational?style=flat-square)
+![Version: 0.3.7](https://img.shields.io/badge/Version-0.3.7-informational?style=flat-square) ![AppVersion: v0.9.0-beta2](https://img.shields.io/badge/AppVersion-v0.9.0--beta2-informational?style=flat-square)
 
 A Helm chart to deploy the terraform-operator Controller and CRD.
 
@@ -30,7 +30,7 @@ kubectl apply -f crds/terraform.yaml
 | controller.environmentVars | `object` key/value envs | `{}` |
 | controller.image.pullPolicy | `string` Set how kubernetes determines when to pull the docker image. | `"IfNotPresent"` |
 | controller.image.repository | `string` image without the tag. | `"isaaguilar/terraform-operator"` |
-| controller.image.tag | `string` tag of the image | `"v0.9.0-beta1"` |
+| controller.image.tag | `string` tag of the image | `"v0.9.0-beta2"` |
 | controller.nodeSelector | `object` node labels for pod assignment | `{}` |
 | controller.replicaCount | `int` number of replicas | `1` |
 | controller.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L31-L37">values.yaml</a> |
@@ -46,7 +46,7 @@ kubectl apply -f crds/terraform.yaml
 | webhook.environmentVars | `object` key/value envs | `{}` |
 | webhook.image.pullPolicy | `string` Set how kubernetes determines when to pull the docker image. | `"IfNotPresent"` |
 | webhook.image.repository | `string` image without the tag. Usually the same as the controller | `"isaaguilar/terraform-operator"` |
-| webhook.image.tag | `string` tag of the image | `"v0.9.0-beta1"` |
+| webhook.image.tag | `string` tag of the image | `"v0.9.0-beta2"` |
 | webhook.nodeSelector | `object` node labels for pod assignment | `{}` |
 | webhook.replicaCount | `int` number of replicas for the webhook | `2` |
 | webhook.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L91">values.yaml</a> |
