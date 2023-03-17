@@ -442,4 +442,14 @@ entries:
     urls:
     - https://github.com/isaaguilar/helm-charts/releases/download/terraform-operator-v0.0.0-test.1/terraform-operator-v0.0.0-test.1.tgz
     version: v0.0.0-test.1
+  terraform-operator-api:
+  - apiVersion: v1
+    appVersion: 0.2.0
+    created: "2023-03-17T19:02:26.70358932Z"
+    description: A Helm chart to deploy the terraform-operator-api
+    digest: 38aa29dcc3078eb73f7151938999ea1c02582aa84d61a1eaffac0bf30a314a44
+    name: terraform-operator-api
+    urls:
+    - https://github.com/GalleyBytes/helm-charts/releases/download/terraform-operator-api-1.0.0/terraform-operator-api-1.0.0.tgz
+    version: 1.0.0
 generated: "2020-09-10T06:56:01.127045195Z"
