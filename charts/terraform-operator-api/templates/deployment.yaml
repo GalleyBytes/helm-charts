@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: terraform-operator
+      component: api
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: terraform-operator
+        component: api
+    spec:
+      serviceAccount: {{ .Values.deployment }}
+      containers:
+      - env:
+        {{- if .Values.postgres.enabled }}
+        - name: DB_URL
+          value: postgres://{{ .Values.postgres.user.username }}:{{ .Values.postgres.user.password }}@{{ .Values.postgres.name }}.{{ .Release.Namespace }}.svc:5432/{{ .Values.postgres.database.name }}
+        {{- end }}
+        - name: PORT
+          value: 0.0.0.0:{{ .Values.server.port }}
+        {{- range .Values.env }}
+        - name: {{ .name }}
+          value: {{ .value }}
+        {{- end }}
+        image: ghcr.io/galleybytes/terraform-operator-api:{{ .Values.image.tag }}
+        imagePullPolicy: IfNotPresent
+        name: api
+        ports:
+        - containerPort: {{ .Values.server.port }}
+          protocol: TCP
+      restartPolicy: Always

@@ -1,0 +1,29 @@
+deployment: terraform-operator-api2
+
+env: []
+# - name: JWT_SIGNING_KEY
+#   value: chamgeMePle!ase
+# - name: ADMIN_USERNAME
+#   value: isa
+# - name: ADMIN_PASSWORD
+#   value: $2a$10$2ap6bphr5ZBkEMTBb/ZoT.zrY7lUwzCW2u1n5tIeVugtVpjMRW9Fe
+
+image:
+  tag: 0.2.0
+
+server:
+  port: 5555
+
+postgres:
+  enabled: false
+  name: terraform-operator-api-postgres
+  server:
+    port: 5432
+    storage: "100Mi"
+  database:
+    name: tfoapi
+  user:
+    username: admin
+    password: password
+
+

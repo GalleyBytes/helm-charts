@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.deployment }}
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/api/v1"
+        backend:
+          service:
+            name: {{ .Values.deployment }}
+            port:
+              number: 80
