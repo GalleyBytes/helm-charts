@@ -62,6 +62,20 @@ items:
             app.kubernetes.io/part-of: terraform-operator-api
             app.kubernetes.io/managed-by: helm
         spec:
+          initContainers:
+            - args:
+                - -rf
+                - /var/lib/postgresql/data/lost+found
+              command:
+                - rm
+              image: busybox:latest
+              imagePullPolicy: IfNotPresent
+              name: cleanup
+              securityContext:
+                privileged: true
+              volumeMounts:
+                - mountPath: /var/lib/postgresql/data
+                  name: db
           containers:
             - env:
                 - name: POSTGRES_DB
