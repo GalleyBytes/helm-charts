@@ -1,5 +1,7 @@
+# -- The name (or name prefix) for the resources created by this chart.
 deployment: terraform-operator-api2
 
+# -- Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core.
 env: []
 # - name: JWT_SIGNING_KEY
 #   value: chamgeMePle!ase
@@ -8,12 +10,38 @@ env: []
 # - name: ADMIN_PASSWORD
 #   value: $2a$10$2ap6bphr5ZBkEMTBb/ZoT.zrY7lUwzCW2u1n5tIeVugtVpjMRW9Fe
 
+# Image options
 image:
+  # The container image tag
   tag: 0.2.0
 
+# - Options for the api-webserver
 server:
+  # -- The port the runtime exposes to connect to the webserver
   port: 5555
 
+# - Service options to expose the API
+service:
+  # -- the http or https port clients will use to access the `server.port`
+  port: 80
+  # -- service type is one of ClusterIP | LoadBalancer | NodePort
+  type: ClusterIP
+
+
+# -- CPU/Memory request and limit configuration
+resources: {}
+
+# -- node labels for pod assignment
+nodeSelector: {}
+
+# -- List of node taints to tolerate
+tolerations: []
+
+# -- node/pod affinities
+affinity: {}
+
+# -- Create a pvc backed postgres database. Not suitable for production use.
+# @default -- `enabled=false`
 postgres:
   enabled: false
   name: terraform-operator-api-postgres
@@ -25,5 +53,3 @@ postgres:
   user:
     username: admin
     password: password
-
-

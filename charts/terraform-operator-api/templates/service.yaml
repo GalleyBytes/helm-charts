@@ -8,10 +8,11 @@ metadata:
 spec:
   ports:
   - name: http
-    port: 80
+    port: {{ .Values.service.port }}
     protocol: TCP
     targetPort: {{ .Values.server.port }}
+
   selector:
     service: terraform-operator
     component: api
-  type: ClusterIP
+  type: {{ .Values.service.type }}
