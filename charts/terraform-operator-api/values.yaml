@@ -19,6 +19,8 @@ server:
 
 # - Service options to expose the API
 service:
+  # -- Service annotations key/values for the service resource
+  annotations: {}
   # -- the http or https port clients will use to access the `server.port`
   port: 80
   # -- service type is one of ClusterIP | LoadBalancer | NodePort
