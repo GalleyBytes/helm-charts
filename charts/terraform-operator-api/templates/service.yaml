@@ -4,7 +4,7 @@ metadata:
   labels:
     service: terraform-operator
     component: api
-  name: {{ .Values.deployment }}
+  name: {{ .Release.Name }}
 spec:
   ports:
   - name: http

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.deployment }}
+  name: {{ .Release.Name }}
 spec:
   replicas: 1
   selector:
@@ -16,7 +16,7 @@ spec:
         service: terraform-operator
         component: api
     spec:
-      serviceAccount: {{ .Values.deployment }}
+      serviceAccount: {{ .Release.Name }}
       containers:
       - env:
         {{- if .Values.postgres.enabled }}
