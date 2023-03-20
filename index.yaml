@@ -445,6 +445,15 @@ entries:
   terraform-operator-api:
   - apiVersion: v1
     appVersion: 0.2.0
+    created: "2023-03-20T13:48:58.552126961Z"
+    description: A Helm chart to deploy the terraform-operator-api
+    digest: a17619b2308d426e503f29f1cbd7970c9f5e5c954b7c3ee2f707a7f20fbc46f4
+    name: terraform-operator-api
+    urls:
+    - https://github.com/GalleyBytes/helm-charts/releases/download/terraform-operator-api-1.0.4/terraform-operator-api-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v1
+    appVersion: 0.2.0
     created: "2023-03-20T13:37:11.322711347Z"
     description: A Helm chart to deploy the terraform-operator-api
     digest: 96e3b726797a56ff3a8b8ae64c5e616b9c1d97e14979f54520bd611f89ae6990
