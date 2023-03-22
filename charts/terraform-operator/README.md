@@ -1,6 +1,6 @@
 # terraform-operator
 
-![Version: 0.3.8](https://img.shields.io/badge/Version-0.3.8-informational?style=flat-square) ![AppVersion: v0.9.0-beta3](https://img.shields.io/badge/AppVersion-v0.9.0--beta3-informational?style=flat-square)
+![Version: 0.3.9](https://img.shields.io/badge/Version-0.3.9-informational?style=flat-square) ![AppVersion: v0.10.0](https://img.shields.io/badge/AppVersion-v0.10.0-informational?style=flat-square)
 
 A Helm chart to deploy the terraform-operator Controller and CRD.
 
@@ -23,33 +23,33 @@ kubectl apply -f crds/terraform.yaml
 
 | Key | Description | Default |
 |---|---|---|
-| controller.affinity | `object` node/pod affinities | `{}` |
-| controller.args | `list` additional arguments for the command | <a href="values.yaml#L22-L24">values.yaml</a> |
 | controller.enabled | `bool` deploy the terraform-operator controller | `true` |
-| controller.env | `list` Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core. Accepts `tpl` values. | `[]` |
-| controller.environmentVars | `object` key/value envs | `{}` |
-| controller.image.pullPolicy | `string` Set how kubernetes determines when to pull the docker image. | `"IfNotPresent"` |
-| controller.image.repository | `string` image without the tag. | `"isaaguilar/terraform-operator"` |
-| controller.image.tag | `string` tag of the image | `"v0.9.0-beta3"` |
-| controller.nodeSelector | `object` node labels for pod assignment | `{}` |
 | controller.replicaCount | `int` number of replicas | `1` |
+| controller.image.repository | `string` image without the tag. | `"isaaguilar/terraform-operator"` |
+| controller.image.tag | `string` tag of the image | `"v0.10.0"` |
+| controller.image.pullPolicy | `string` Set how kubernetes determines when to pull the docker image. | `"IfNotPresent"` |
+| controller.args | `list` additional arguments for the command | <a href="values.yaml#L22-L24">values.yaml</a> |
 | controller.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L31-L37">values.yaml</a> |
-| controller.securityContext.runAsNonRoot | `bool` Allow running as root when false | `true` |
-| controller.securityContext.runAsUser | `int` All processes run with user specified. This can be set to null for use on openshift | `1001` |
 | controller.serviceAccount.create | `bool` creates the service account for the controller | `true` |
 | controller.serviceAccount.extraAnnotations | `object` add extra annotations the service account | `{}` |
+| controller.securityContext.runAsNonRoot | `bool` Allow running as root when false | `true` |
+| controller.securityContext.runAsUser | `int` All processes run with user specified. This can be set to null for use on openshift | `1001` |
+| controller.environmentVars | `object` key/value envs | `{}` |
+| controller.env | `list` Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core. Accepts `tpl` values. | `[]` |
+| controller.nodeSelector | `object` node labels for pod assignment | `{}` |
 | controller.tolerations | `list` List of node taints to tolerate | `[]` |
-| webhook.affinity | `object` node/pod affinities | <a href="values.yaml#L117">values.yaml</a> |
-| webhook.args | `list` additional arguments for the command | <a href="values.yaml#L85">values.yaml</a> |
+| controller.affinity | `object` node/pod affinities | `{}` |
 | webhook.enabled | `bool` enables the webhook - required most of the time | `true` |
-| webhook.env | `list` Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core. Accepts `tpl` values. | `[]` |
-| webhook.environmentVars | `object` key/value envs | `{}` |
-| webhook.image.pullPolicy | `string` Set how kubernetes determines when to pull the docker image. | `"IfNotPresent"` |
-| webhook.image.repository | `string` image without the tag. Usually the same as the controller | `"isaaguilar/terraform-operator"` |
-| webhook.image.tag | `string` tag of the image | `"v0.9.0-beta3"` |
-| webhook.nodeSelector | `object` node labels for pod assignment | `{}` |
 | webhook.replicaCount | `int` number of replicas for the webhook | `2` |
+| webhook.image.repository | `string` image without the tag. Usually the same as the controller | `"isaaguilar/terraform-operator"` |
+| webhook.image.tag | `string` tag of the image | `"v0.10.0"` |
+| webhook.image.pullPolicy | `string` Set how kubernetes determines when to pull the docker image. | `"IfNotPresent"` |
+| webhook.args | `list` additional arguments for the command | <a href="values.yaml#L85">values.yaml</a> |
 | webhook.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L91">values.yaml</a> |
 | webhook.securityContext.runAsNonRoot | `bool` Allow running as root when false | `true` |
 | webhook.securityContext.runAsUser | `int` All processes run with user specified. This can be set to null for use on openshift | `1001` |
+| webhook.environmentVars | `object` key/value envs | `{}` |
+| webhook.env | `list` Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core. Accepts `tpl` values. | `[]` |
+| webhook.nodeSelector | `object` node labels for pod assignment | `{}` |
 | webhook.tolerations | `list` List of node taints to tolerate | `[]` |
+| webhook.affinity | `object` node/pod affinities | <a href="values.yaml#L117">values.yaml</a> |
