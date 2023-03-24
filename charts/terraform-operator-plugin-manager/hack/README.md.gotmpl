@@ -1,0 +1,30 @@
+{{ template "chart.header" . }}
+{{ template "chart.deprecationWarning" . }}
+
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}{{ template "chart.appVersionBadge" . }}
+
+{{ template "chart.description" . }}
+
+## TL;DR;
+
+```console
+$ helm repo add galleybytes https://galleybytes.github.io/helm-charts
+$ helm install galleybytes/terraform-operator-plugin-manager --namespace tf-system
+```
+
+
+{{ template "chart.homepageLine" . }}
+
+{{ template "chart.maintainersSection" . }}
+
+{{ template "chart.sourcesSection" . }}
+
+{{ template "chart.requirementsSection" . }}
+
+## Values
+
+| Key | Description | Default |
+|---|---|---|
+{{- range .Values }}
+| {{ .Key }} | `{{ .Type }}` {{ if .Description }}{{ .Description }}{{ else }}{{ .AutoDescription }}{{ end }} | {{ if .Default }}{{ .Default }}{{ else }}{{ .AutoDefault }}{{ end }} |
+{{- end }}

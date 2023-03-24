@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: terraform-operator-remote-controller
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Values.image.tag }}
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/part-of: terraform-operator
+    app.kubernetes.io/managed-by: helm
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+      component: controller
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+        component: controller
+    spec:
+      serviceAccountName: {{ .Release.Name }}
+      containers:
+      - args:
+        - --secret-name={{ .Release.Name }}-certs
+        - --namespace={{ .Release.Namespace }}
+        - --service-name={{ .Release.Name }}
+        - --mutating-webhook-configuration-name={{ .Release.Name }}
+        {{- with .Values.args }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+        name: {{ .Release.Name }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        {{- with .Values.env }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+        {{- with .Values.Resources }}
+        resources:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        ports:
+        - containerPort: {{ .Values.server.port }}
+          protocol: TCP
+        volumeMounts:
+        - name: certsvol
+          mountPath: /etc/certs
+          readOnly: true
+        - name: pluginsvol
+          mountPath: /plugins
+      volumes:
+      - name: certsvol
+        secret:
+          secretName: {{ .Release.Name }}-certs
+          optional: true
+          defaultMode: 0600
+      - name: pluginsvol
+        configMap:
+          name: {{ .Release.Name }}
+          defaultMode: 0644
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

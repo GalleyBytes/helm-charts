@@ -1,0 +1,54 @@
+# -- Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core.
+env: []
+
+# Image options
+image:
+  repository: ghcr.io/galleybytes/terraform-operator-plugin-manager
+  # The container image tag
+  tag: 0.3.0
+  pullPolicy: IfNotPresent
+
+# -- additional args to pass to the command
+args: []
+
+# - Options for the api-webserver
+server:
+  # -- The port the runtime exposes to connect to the webserver
+  port: 8443
+
+# - Service options to expose the API
+service:
+  # -- Service annotations key/values for the service resource
+  annotations: {}
+  # -- the http or https port clients will use to access the `server.port`
+  port: 443
+  # -- service type is one of ClusterIP | LoadBalancer | NodePort
+  type: ClusterIP
+
+# -- CPU/Memory request and limit configuration
+resources: {}
+
+# -- node labels for pod assignment
+nodeSelector: {}
+
+# -- List of node taints to tolerate
+tolerations: []
+
+# -- node/pod affinities
+affinity: {}
+
+# -- definitions of plugin definitions & task options. See values.yaml
+plugins: {}
+  # busyboxworker:
+  #   pluginConfig:
+  #     image: busybox:latest
+  #     imagePullPolicy: IfNotPresent
+  #     when: At
+  #     task: init
+  #   taskConfig:
+  #     env:
+  #       - name: change
+  #         value: log
+  #       - name: dog
+  #         value: triangle
+  #     restartPolicy: Never
