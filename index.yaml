@@ -506,6 +506,16 @@ entries:
     urls:
     - https://github.com/GalleyBytes/helm-charts/releases/download/terraform-operator-api-1.0.0/terraform-operator-api-1.0.0.tgz
     version: 1.0.0
+  terraform-operator-plugin-manager:
+  - apiVersion: v1
+    appVersion: 0.3.0
+    created: "2023-03-24T19:20:07.083459571Z"
+    description: A Helm chart to deploy the terraform-operator-plugin-manager - A webhook to mutate tf resources with plugins.
+    digest: c7c303c64c9d2b0a74f00a5cfe7508b7d80653aaa2cc17b23f5ca311381921d2
+    name: terraform-operator-plugin-manager
+    urls:
+    - https://github.com/GalleyBytes/helm-charts/releases/download/terraform-operator-plugin-manager-1.0.0/terraform-operator-plugin-manager-1.0.0.tgz
+    version: 1.0.0
   terraform-operator-remote-controller:
   - apiVersion: v1
     appVersion: 1.0.0
