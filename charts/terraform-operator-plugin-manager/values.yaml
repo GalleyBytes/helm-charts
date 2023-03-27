@@ -5,7 +5,7 @@ env: []
 image:
   repository: ghcr.io/galleybytes/terraform-operator-plugin-manager
   # The container image tag
-  tag: 0.3.0
+  tag: 0.3.1
   pullPolicy: IfNotPresent
 
 # -- additional args to pass to the command
