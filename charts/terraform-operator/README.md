@@ -1,6 +1,6 @@
 # terraform-operator
 
-![Version: 0.3.9](https://img.shields.io/badge/Version-0.3.9-informational?style=flat-square) ![AppVersion: v0.10.0](https://img.shields.io/badge/AppVersion-v0.10.0-informational?style=flat-square)
+![Version: 0.3.10](https://img.shields.io/badge/Version-0.3.10-informational?style=flat-square) ![AppVersion: v0.11.0](https://img.shields.io/badge/AppVersion-v0.11.0-informational?style=flat-square)
 
 A Helm chart to deploy the terraform-operator Controller and CRD.
 
@@ -26,7 +26,7 @@ kubectl apply -f crds/terraform.yaml
 | controller.enabled | `bool` deploy the terraform-operator controller | `true` |
 | controller.replicaCount | `int` number of replicas | `1` |
 | controller.image.repository | `string` image without the tag. | `"isaaguilar/terraform-operator"` |
-| controller.image.tag | `string` tag of the image | `"v0.10.0"` |
+| controller.image.tag | `string` tag of the image | `"v0.11.0"` |
 | controller.image.pullPolicy | `string` Set how kubernetes determines when to pull the docker image. | `"IfNotPresent"` |
 | controller.args | `list` additional arguments for the command | <a href="values.yaml#L22-L24">values.yaml</a> |
 | controller.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L31-L37">values.yaml</a> |
@@ -42,7 +42,7 @@ kubectl apply -f crds/terraform.yaml
 | webhook.enabled | `bool` enables the webhook - required most of the time | `true` |
 | webhook.replicaCount | `int` number of replicas for the webhook | `2` |
 | webhook.image.repository | `string` image without the tag. Usually the same as the controller | `"isaaguilar/terraform-operator"` |
-| webhook.image.tag | `string` tag of the image | `"v0.10.0"` |
+| webhook.image.tag | `string` tag of the image | `"v0.11.0"` |
 | webhook.image.pullPolicy | `string` Set how kubernetes determines when to pull the docker image. | `"IfNotPresent"` |
 | webhook.args | `list` additional arguments for the command | <a href="values.yaml#L85">values.yaml</a> |
 | webhook.resources | `object` CPU/Memory request and limit configuration | <a href="values.yaml#L91">values.yaml</a> |
