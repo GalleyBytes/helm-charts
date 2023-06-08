@@ -46,7 +46,6 @@ spec:
         {{- range .Values.controller.args }}
         - {{ . }}
         {{- end }}
-        - --disable-conversion-webhook
         env:
         - name: WATCH_NAMESPACE # Leave blank to watch all namespaces
         - name: POD_NAMESPACE

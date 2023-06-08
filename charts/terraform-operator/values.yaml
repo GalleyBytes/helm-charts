@@ -10,7 +10,7 @@ controller:
 
   image:
     # controller.image.repository -- image without the tag.
-    repository: isaaguilar/terraform-operator
+    repository: ghcr.io/galleybytes/terraform-operator
     # controller.image.tag -- tag of the image
     tag: v0.11.0
     # controller.image.pullPolicy -- Set how kubernetes determines when
@@ -63,70 +63,3 @@ controller:
 
   # controller.affinity -- node/pod affinities
   affinity: {}
-
-# - webhooks options
-webhook:
-  # -- enables the webhook - required most of the time
-  enabled: true
-
-  # -- number of replicas for the webhook
-  replicaCount: 2
-
-  image:
-    # -- image without the tag. Usually the same as the controller
-    repository: isaaguilar/terraform-operator
-    # -- tag of the image
-    tag: v0.11.0
-    # -- Set how kubernetes determines when to pull the docker image.
-    pullPolicy: IfNotPresent
-
-  # -- additional arguments for the command
-  # @default -- <a href="values.yaml#L85">values.yaml</a>
-  args:
-  - --zap-log-level=debug
-  - --zap-encoder=console
-
-  # -- CPU/Memory request and limit configuration
-  # @default -- <a href="values.yaml#L91">values.yaml</a>
-  resources:
-    requests:
-      cpu: 25m
-      memory: 64M
-
-  securityContext:
-    # -- Allow running as root when false
-    runAsNonRoot: true
-    # -- All processes run with user specified. This can be set to null for use on openshift
-    runAsUser: 1001
-
-  # -- key/value envs
-  environmentVars: {}
-
-  # -- Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core.
-  # Accepts `tpl` values.
-  env: []
-
-  # -- node labels for pod assignment
-  nodeSelector: {}
-
-  # -- List of node taints to tolerate
-  tolerations: []
-
-  # -- node/pod affinities
-  # @default -- <a href="values.yaml#L117">values.yaml</a>
-  affinity:
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-      - podAffinityTerm:
-          labelSelector:
-            matchExpressions:
-            - key: release
-              operator: In
-              values:
-              - "{{ .Release.Name }}"
-            - key: component
-              operator: In
-              values:
-              - webhook
-          topologyKey: kubernetes.io/hostname
-        weight: 100
