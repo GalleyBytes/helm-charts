@@ -12,7 +12,7 @@ metadata:
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
 rules:
 - apiGroups:
-  - tf.isaaguilar.com
+  - tf.galleybytes.com
   resources:
   - 'terraforms'
   verbs:
