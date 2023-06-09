@@ -2,4 +2,4 @@ apiVersion: v1
 appVersion: v0.12.0
 description: A Helm chart to deploy the terraform-operator Controller and CRD.
 name: terraform-operator
-version: 0.4.1
+version: 0.4.2

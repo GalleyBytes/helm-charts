@@ -84,7 +84,7 @@ rules:
   - get
 
 - apiGroups:
-  - tf.isaaguilar.com
+  - tf.galleybytes.com
   resources:
   - '*'
   verbs:
@@ -95,6 +95,6 @@ rules:
   resources:
   - customresourcedefinitions
   resourceNames:
-  - terraforms.tf.isaaguilar.com
+  - terraforms.tf.galleybytes.com
   verbs:
   - '*'
