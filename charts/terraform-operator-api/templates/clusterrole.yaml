@@ -10,6 +10,28 @@ rules:
   verbs:
   - '*'
 - apiGroups:
+  - apps
+  resources:
+  - statefulsets
+  verbs:
+  - '*'
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - roles
+  - rolebindings
+  verbs:
+  - '*'
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  - configmaps
+  - services
+  - serviceaccounts
+  verbs:
+  - '*'
+- apiGroups:
   - ""
   resources:
   - secrets
