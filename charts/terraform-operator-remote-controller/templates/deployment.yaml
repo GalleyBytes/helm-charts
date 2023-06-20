@@ -32,6 +32,10 @@ spec:
       - name: {{ .Release.Name }}
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: Always
+        args:
+        {{- range .Values.args }}
+        - {{ . }}
+        {{- end }}
         env:
         {{- if .Values.env }}
         {{- .Values.env | toYaml | nindent 8 }}
