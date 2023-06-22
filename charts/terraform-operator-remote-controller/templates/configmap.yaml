@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: terraform-operator-remote-controller
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Values.image.tag }}
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/part-of: terraform-operator
+    app.kubernetes.io/managed-by: helm
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+data:
+  {{ if .Values.data.vcluster.enabled }}
+  vcluster.tpl.yaml: |-
+  {{- if .Values.data.vcluster.prerender }}
+    {{- tpl .Values.data.vcluster.manifest . | nindent 4 }}
+  {{- else }}
+    {{- .Values.data.vcluster.manifest | nindent 4 }}
+  {{- end }}
+  {{- end }}

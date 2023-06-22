@@ -40,10 +40,25 @@ spec:
         {{- if .Values.env }}
         {{- .Values.env | toYaml | nindent 8 }}
         {{- end }}
+        {{- if .Values.data.vcluster.enabled }}
+        - name: TFO_API_VCLUSTER_MANIFEST
+          value: /data/vcluster/vcluster.tpl.yaml
+        {{- end }}
         {{- with .Values.resources }}
         resources:
           {{- toYaml . | nindent 10 }}
         {{- end }}
+        volumeMounts:
+        {{- if .Values.data.vcluster.enabled }}
+        - name: vcluster
+          mountPath: /data/vcluster
+        {{- end }}
+      volumes:
+      {{- if .Values.data.vcluster.enabled }}
+      - name: vcluster
+        configMap:
+          name: {{ .Release.Name }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

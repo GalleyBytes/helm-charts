@@ -35,3 +35,14 @@ tolerations: []
 
 # -- node/pod affinities
 affinity: {}
+
+# - ConfigMap data used to mount as a volume
+data:
+  # -- A preset options to render a volume/volumeMount and environment variable used to
+  vcluster:
+    # -- Enable configuring the vcluster
+    enabled: false
+    # -- Run the manifest thru a helm-template before applying
+    prerender: false
+    # -- The fully defined vCluster configuration
+    manifest: ""
