@@ -38,7 +38,7 @@ spec:
         {{- end }}
         env:
         {{- if .Values.env }}
-        {{- .Values.env | toYaml | nindent 8 }}
+        {{-  tpl (.Values.env | toYaml | nindent 8) . }}
         {{- end }}
         {{- if .Values.data.vcluster.enabled }}
         - name: TFO_API_VCLUSTER_MANIFEST

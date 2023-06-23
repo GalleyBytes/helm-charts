@@ -1,6 +1,6 @@
 # terraform-operator-remote-controller
 
-![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![AppVersion: 1.1.0](https://img.shields.io/badge/AppVersion-1.1.0-informational?style=flat-square)
+![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![AppVersion: 1.1.0](https://img.shields.io/badge/AppVersion-1.1.0-informational?style=flat-square)
 
 A Helm chart to deploy the terraform-operator-remote-controller
 
@@ -16,7 +16,7 @@ $ helm install terraform-operator-remote-controller galleybytes/terraform-operat
 | Key | Description | Default |
 |---|---|---|
 | image | `object` image repository and tag | `{"repository":"ghcr.io/galleybytes/terraform-operator-remote-controller","tag":"1.1.0"}` |
-| env | `list` Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core. | `[]` |
+| env | `list` Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core. Values can be tpl ie `{{ .Values.CLIENT_NAME }}` where `CLIENT_NAME` can be defined elsewhere. | `[]` |
 | resources | `object` CPU/Memory request and limit configuration | `{"limits":{"cpu":"50m","memory":"32M"},"requests":{"cpu":"5m","memory":"32M"}}` |
 | nodeSelector | `object` node labels for pod assignment | `{}` |
 | tolerations | `list` List of node taints to tolerate | `[]` |
