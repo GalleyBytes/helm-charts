@@ -12,7 +12,7 @@ controller:
     # controller.image.repository -- image without the tag.
     repository: ghcr.io/galleybytes/terraform-operator
     # controller.image.tag -- tag of the image
-    tag: v0.12.1
+    tag: v0.13.0
     # controller.image.pullPolicy -- Set how kubernetes determines when
     # to pull the docker image.
     pullPolicy: IfNotPresent
@@ -54,6 +54,9 @@ controller:
   # -- Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core.
   # Accepts `tpl` values.
   env: []
+
+  # -- EnvFrom defined like k8s EnvFrom https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envfromsource-v1-core.
+  envFrom: []
 
   # controller.nodeSelector -- node labels for pod assignment
   nodeSelector: {}
