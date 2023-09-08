@@ -18,7 +18,13 @@ spec:
     spec:
       serviceAccount: {{ .Release.Name }}
       containers:
-      - env:
+      - {{ with .Values.args -}}
+        args:
+          {{- toYaml . | nindent 8 }}
+        {{ end -}}
+        env:
+        - name: SERVICE_NAME
+          value: {{ .Release.Name }}
         {{- if .Values.postgres.enabled }}
         - name: DB_URL
           value: postgres://{{ .Values.postgres.user.username }}:{{ .Values.postgres.user.password }}@{{ .Values.postgres.name }}.{{ .Release.Namespace }}.svc:5432/{{ .Values.postgres.database.name }}

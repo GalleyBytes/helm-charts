@@ -1,6 +1,6 @@
 # terraform-operator-api
 
-![Version: 1.0.9](https://img.shields.io/badge/Version-1.0.9-informational?style=flat-square) ![AppVersion: 0.5.0](https://img.shields.io/badge/AppVersion-0.5.0-informational?style=flat-square)
+![Version: 1.0.10](https://img.shields.io/badge/Version-1.0.10-informational?style=flat-square) ![AppVersion: 0.5.0](https://img.shields.io/badge/AppVersion-0.5.0-informational?style=flat-square)
 
 A Helm chart to deploy the terraform-operator-api
 
@@ -15,6 +15,7 @@ $ helm install galleybytes/terraform-operator-api --namespace tf-system
 
 | Key | Description | Default |
 |---|---|---|
+| args | `list` Optional args to include for the command | `["use-service-host"]` |
 | env | `list` Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core. | `[]` |
 | image.tag | `string`  | `"0.5.0"` |
 | server.port | `int` The port the runtime exposes to connect to the webserver | `5555` |
