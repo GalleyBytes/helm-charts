@@ -1,7 +1,7 @@
 # -- image repository and tag
 image:
   repository: ghcr.io/galleybytes/terraform-operator-remote-controller
-  tag: 1.1.0
+  tag: 1.2.3
 
 # -- Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core.
 # Values can be tpl ie `{{ .Values.CLIENT_NAME }}` where `CLIENT_NAME` can be defined elsewhere.
@@ -43,7 +43,7 @@ data:
   vcluster:
     # -- Enable configuring the vcluster
     enabled: false
-    # -- Run the manifest thru a helm-template before applying
+    # -- Run the manifest thru a helm-template before applying using the values from the current helm release
     prerender: false
     # -- The fully defined vCluster configuration
     manifest: ""
