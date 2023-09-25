@@ -1,7 +1,7 @@
 # -- image repository and tag
 image:
   repository: ghcr.io/galleybytes/terraform-operator-remote-controller
-  tag: 1.2.6
+  tag: 1.2.7
 
 # -- Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core.
 # Values can be tpl ie `{{ .Values.CLIENT_NAME }}` where `CLIENT_NAME` can be defined elsewhere.
