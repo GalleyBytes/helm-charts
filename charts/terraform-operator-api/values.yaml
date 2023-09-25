@@ -14,7 +14,7 @@ env: []
 # Image options
 image:
   # The container image tag
-  tag: 0.5.1
+  tag: 0.6.0
 
 # - Options for the api-webserver
 server:
