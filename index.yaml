@@ -698,6 +698,15 @@ entries:
     version: 1.0.0
   terraform-operator-remote-controller:
   - apiVersion: v1
+    appVersion: 1.2.9
+    created: "2023-10-03T12:26:55.00220771Z"
+    description: A Helm chart to deploy the terraform-operator-remote-controller
+    digest: f93065a8cbdbcff85382d058377cc608aa47d544a72736727fa897be62853015
+    name: terraform-operator-remote-controller
+    urls:
+    - https://github.com/GalleyBytes/helm-charts/releases/download/terraform-operator-remote-controller-1.0.13/terraform-operator-remote-controller-1.0.13.tgz
+    version: 1.0.13
+  - apiVersion: v1
     appVersion: 1.2.8
     created: "2023-09-25T18:35:42.199869571Z"
     description: A Helm chart to deploy the terraform-operator-remote-controller
