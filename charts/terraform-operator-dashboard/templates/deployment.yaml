@@ -19,7 +19,6 @@ spec:
         service: terraform-operator
         component: dashboard
     spec:
-      serviceAccount: {{ .Release.Name }}
       containers:
       - {{ with .Values.args -}}
         args:
