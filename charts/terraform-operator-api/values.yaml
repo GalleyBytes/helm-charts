@@ -4,6 +4,8 @@ args:
 
 # -- Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core.
 env: []
+# - name: DASHBOARD
+#   value: https://<dashboard-host>
 # - name: JWT_SIGNING_KEY
 #   value: chamgeMePle!ase
 # - name: ADMIN_USERNAME
@@ -14,7 +16,7 @@ env: []
 # Image options
 image:
   # The container image tag
-  tag: 0.7.2
+  tag: 0.8.1
 
 # - Options for the api-webserver
 server:
