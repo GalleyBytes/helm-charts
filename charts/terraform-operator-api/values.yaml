@@ -2,7 +2,7 @@
 args:
 - use-service-host
 
-# -- Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core.
+# -- Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#envvar-v1-core.
 env: []
 # - name: DASHBOARD
 #   value: https://<dashboard-host>
@@ -12,6 +12,10 @@ env: []
 #   value: isa
 # - name: ADMIN_PASSWORD
 #   value: $2a$10$2ap6bphr5ZBkEMTBb/ZoT.zrY7lUwzCW2u1n5tIeVugtVpjMRW9Fe
+#
+
+# -- List of sources to populate environment variables in the container. See https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#envfromsource-v1-core
+envFrom: []
 
 # Image options
 image:
@@ -31,6 +35,9 @@ service:
   port: 80
   # -- service type is one of ClusterIP | LoadBalancer | NodePort
   type: ClusterIP
+
+# -- Map of environment variables (C_IDENTIFIERS) that will be added to deployment
+secret: {}
 
 
 # -- CPU/Memory request and limit configuration

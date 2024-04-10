@@ -22,6 +22,14 @@ spec:
         args:
           {{- toYaml . | nindent 8 }}
         {{ end -}}
+        envFrom:
+        {{- with .Values.envFrom }}
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
+        {{- if .Values.secret }}
+        - secretRef:
+            name: {{ .Release.Name }}
+        {{- end }}
         env:
         - name: SERVICE_NAME
           value: {{ .Release.Name }}
