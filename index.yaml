@@ -751,6 +751,15 @@ entries:
     version: 1.0.0
   terraform-operator-dashboard:
   - apiVersion: v1
+    appVersion: 1.0.0-beta-20240520134100
+    created: "2024-05-20T20:41:12.995889124Z"
+    description: A Helm chart to deploy the terraform-operator-dashboard
+    digest: 3d7db0fdc1f08dd8eb6174809393d8ffb988f3f1bc3f88c93d9b9f2acf5af69a
+    name: terraform-operator-dashboard
+    urls:
+    - https://github.com/GalleyBytes/helm-charts/releases/download/terraform-operator-dashboard-1.0.2/terraform-operator-dashboard-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v1
     appVersion: 1.0.0-alpha-20231026001139
     created: "2023-10-26T04:25:36.561321668Z"
     description: A Helm chart to deploy the terraform-operator-dashboard
