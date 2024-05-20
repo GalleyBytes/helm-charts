@@ -20,7 +20,7 @@ envFrom: []
 # Image options
 image:
   # The container image tag
-  tag: 0.8.1
+  tag: 0.9.0
 
 # - Options for the api-webserver
 server:
