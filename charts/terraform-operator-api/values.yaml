@@ -14,6 +14,9 @@ env: []
 #   value: $2a$10$2ap6bphr5ZBkEMTBb/ZoT.zrY7lUwzCW2u1n5tIeVugtVpjMRW9Fe
 #
 
+# -- The desired number of identical pods the deployment maintains
+replicas: 3
+
 # -- List of sources to populate environment variables in the container. See https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#envfromsource-v1-core
 envFrom: []
 
