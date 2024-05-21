@@ -9,7 +9,10 @@ spec:
       service: terraform-operator
       component: api
   strategy:
-    type: Recreate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 33%
+    type: RollingUpdate
   template:
     metadata:
       labels:
