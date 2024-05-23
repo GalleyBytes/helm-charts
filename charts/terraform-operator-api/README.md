@@ -1,6 +1,6 @@
 # terraform-operator-api
 
-![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![AppVersion: 0.9.0](https://img.shields.io/badge/AppVersion-0.9.0-informational?style=flat-square)
+![Version: 1.1.4](https://img.shields.io/badge/Version-1.1.4-informational?style=flat-square) ![AppVersion: 0.9.1](https://img.shields.io/badge/AppVersion-0.9.1-informational?style=flat-square)
 
 A Helm chart to deploy the terraform-operator-api
 
@@ -19,7 +19,7 @@ $ helm install galleybytes/terraform-operator-api --namespace tf-system
 | env | `list` Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#envvar-v1-core. | `[]` |
 | replicas | `int` The desired number of identical pods the deployment maintains | `3` |
 | envFrom | `list` List of sources to populate environment variables in the container. See https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#envfromsource-v1-core | `[]` |
-| image.tag | `string`  | `"0.9.0"` |
+| image.tag | `string`  | `"0.9.1"` |
 | server.port | `int` The port the runtime exposes to connect to the webserver | `5555` |
 | service.annotations | `object` Service annotations key/values for the service resource | `{}` |
 | service.port | `int` the http or https port clients will use to access the `server.port` | `80` |
