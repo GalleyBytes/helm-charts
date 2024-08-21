@@ -30,3 +30,6 @@ rules:
   - patch
   - get
   - list
+{{- with .Values.rbac.rules }}
+{{ toYaml . }}
+{{- end }}

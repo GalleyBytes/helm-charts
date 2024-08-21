@@ -1,6 +1,6 @@
 # terraform-operator-remote-controller
 
-![Version: 1.0.14](https://img.shields.io/badge/Version-1.0.14-informational?style=flat-square) ![AppVersion: 1.2.10](https://img.shields.io/badge/AppVersion-1.2.10-informational?style=flat-square)
+![Version: 1.0.15](https://img.shields.io/badge/Version-1.0.15-informational?style=flat-square) ![AppVersion: 1.3.1](https://img.shields.io/badge/AppVersion-1.3.1-informational?style=flat-square)
 
 A Helm chart to deploy the terraform-operator-remote-controller
 
@@ -15,7 +15,7 @@ $ helm install terraform-operator-remote-controller galleybytes/terraform-operat
 
 | Key | Description | Default |
 |---|---|---|
-| image | `object` image repository and tag | `{"repository":"ghcr.io/galleybytes/terraform-operator-remote-controller","tag":"1.2.10"}` |
+| image | `object` image repository and tag | `{"repository":"ghcr.io/galleybytes/terraform-operator-remote-controller","tag":"1.3.1"}` |
 | env | `list` Env defined like k8s EnvVar https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvar-v1-core. Values can be tpl ie `{{ .Values.CLIENT_NAME }}` where `CLIENT_NAME` can be defined elsewhere. | `[]` |
 | resources | `object` CPU/Memory request and limit configuration | `{"limits":{"cpu":"50m","memory":"32M"},"requests":{"cpu":"5m","memory":"32M"}}` |
 | nodeSelector | `object` node labels for pod assignment | `{}` |
@@ -25,3 +25,4 @@ $ helm install terraform-operator-remote-controller galleybytes/terraform-operat
 | data.vcluster.enabled | `bool` Enable configuring the vcluster | `false` |
 | data.vcluster.prerender | `bool` Run the manifest thru a helm-template before applying using the values from the current helm release | `false` |
 | data.vcluster.manifest | `string` The fully defined vCluster configuration | `""` |
+| rbac.rules | `list` Additional RBAC rules added to the policy used by the controller and post jobs | `[]` |
