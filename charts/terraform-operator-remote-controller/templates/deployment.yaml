@@ -46,7 +46,7 @@ spec:
         {{- end }}
         {{- if .Values.tolerations }}
         - name: POST_JOB_TOLERATIONS
-          value: /data/tolerations/tolerations
+          value: /data/config/tolerations
         {{- end }}
         {{- with .Values.resources }}
         resources:
@@ -55,11 +55,12 @@ spec:
         volumeMounts:
         {{- if .Values.data.vcluster.enabled }}
         - name: config-volume
+          subPath: vcluster
           mountPath: /data/vcluster
         {{- end }}
         {{- if .Values.data.vcluster.enabled }}
         - name: config-volume
-          mountPath: /data/tolerations
+          mountPath: /data/config
         {{- end }}
       volumes:
       {{- if or .Values.data.vcluster.enabled .Values.tolerations }}
