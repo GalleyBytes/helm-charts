@@ -44,18 +44,26 @@ spec:
         - name: TFO_API_VCLUSTER_MANIFEST
           value: /data/vcluster/vcluster.tpl.yaml
         {{- end }}
+        {{- if .Values.tolerations }}
+        - name: POST_JOB_TOLERATIONS
+          value: /data/tolerations/tolerations
+        {{- end }}
         {{- with .Values.resources }}
         resources:
           {{- toYaml . | nindent 10 }}
         {{- end }}
         volumeMounts:
         {{- if .Values.data.vcluster.enabled }}
-        - name: vcluster
+        - name: config-volume
           mountPath: /data/vcluster
         {{- end }}
+        {{- if .Values.data.vcluster.enabled }}
+        - name: config-volume
+          mountPath: /data/tolerations
+        {{- end }}
       volumes:
-      {{- if .Values.data.vcluster.enabled }}
-      - name: vcluster
+      {{- if or .Values.data.vcluster.enabled .Values.tolerations }}
+      - name: config-volume
         configMap:
           name: {{ .Release.Name }}
       {{- end }}

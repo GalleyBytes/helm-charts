@@ -11,6 +11,10 @@ metadata:
     app.kubernetes.io/managed-by: helm
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
 data:
+  {{- if .Values.tolerations }}
+   tolerations: |
+   {{- toYaml .Values.tolerations }}
+   {{- end }}
   {{ if .Values.data.vcluster.enabled }}
   vcluster.tpl.yaml: |-
   {{- if .Values.data.vcluster.prerender }}
