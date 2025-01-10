@@ -12,7 +12,7 @@ metadata:
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
 data:
   {{- if .Values.tolerations }}
-  tolerations: |
+  tolerations.yaml: |
   {{- with .Values.tolerations }}
   {{- . | toYaml |nindent 4 }}
   {{- end }}
