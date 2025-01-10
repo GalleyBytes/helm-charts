@@ -46,7 +46,7 @@ spec:
         {{- end }}
         {{- if .Values.tolerations }}
         - name: POST_JOB_TOLERATIONS
-          value: /data/config/tolerations
+          value: /data/config/tolerations.yaml
         {{- end }}
         {{- with .Values.resources }}
         resources:
