@@ -69,9 +69,7 @@ spec:
         {{- end }}
         {{- with .Values.controller.envFrom }}
         envFrom:
-        {{- range $key, $value := . }}
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+          {{- toYaml . | nindent 10 }}
         {{- end }}
         {{- with .Values.controller.resources }}
         resources:
