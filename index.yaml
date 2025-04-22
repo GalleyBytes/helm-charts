@@ -3,6 +3,15 @@ entries:
   terraform-operator:
   - apiVersion: v1
     appVersion: v0.17.1
+    created: "2025-04-22T15:34:59.480383535Z"
+    description: A Helm chart to deploy the terraform-operator Controller and CRD.
+    digest: 8f66167797adaf9433090996d34b86583d6a51bb4aef8d4fef9ff700a0c10c94
+    name: terraform-operator
+    urls:
+    - https://github.com/GalleyBytes/helm-charts/releases/download/terraform-operator-0.7.3/terraform-operator-0.7.3.tgz
+    version: 0.7.3
+  - apiVersion: v1
+    appVersion: v0.17.1
     created: "2024-05-17T12:43:32.46918485Z"
     description: A Helm chart to deploy the terraform-operator Controller and CRD.
     digest: 4782ebcfa415b699ba832d728462d398168b3472b48a7986dec978aedbe526ea
